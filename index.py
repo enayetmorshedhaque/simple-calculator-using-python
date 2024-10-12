@@ -1,68 +1,91 @@
-def operators_list():
-    
-    operators = ['+', '-', '*', '/', '%']
-
-    for i in range(len(operators)):
-        print(f"{i+1}. {operators[i]}")
-
-    print(f"{len(operators)+1}. Exit")
-
-def input_numbers():
-    
-    input_one = float(input("Enter Number One: "))
-    input_two = float(input("Enter Number Two: "))
-    
-    return input_one, input_two
+def welcome_text():
+    print("Simple Calculator Using Python")
 
 def section_divider():
     print("------------------------------")
 
+def operators_list():
+    print("Select Your Option")
+    section_divider()
+    operators = ['+', '-', '*', '/', '%']
+    for i in range(len(operators)):
+        print(f"{i+1}. {operators[i]}")
+    print(f"{len(operators)+1}. Exit")
 
-print("\nSimple Calculator Using Python")
+def input_numbers():
+    input_one = float(input("Enter Number One: "))
+    section_divider()
+    input_two = float(input("Enter Number Two: "))
+    section_divider()
+    return input_one, input_two
+
+def add(a, b):
+    print(f"{a} + {b} = {(a + b)}")
+
+def sub(a, b):
+    print(f"{a} - {b} = {(a - b)}")
+
+def mul(a, b):
+    print(f"{a} * {b} = {(a * b)}")
+
+def div(a, b):
+    if(b == 0):
+        print("Oooppss... Invalid Operation")
+    else:
+        print(f"{a} / {b} = {(a / b)}")
+
+def mod(a, b):
+    print(f"{a} % {b} = {(a % b)}")
+
+
+#main program starts here
+section_divider()
+welcome_text()
 section_divider()
 
+print("\n\n")
+
 exit_program = False
-
 while not exit_program:
-    number_one, number_two = input_numbers()
-    print("------------------------------")
     operators_list()
-    print("------------------------------")
-    choice = int(input("Enter Your Choice: "))
-    print("------------------------------")
+    section_divider()
 
-    if choice == 1:
-        print(f"Result is: {number_one + number_two}")  # Addition
-        print("------------------------------")
+    choice = input("Enter your choice: ")
+    section_divider()
 
-    elif choice == 2:
-        print(f"Result is: {number_one - number_two}")  # Subtraction
-        print("------------------------------")
+    if choice == '1':
+        a, b = input_numbers()
+        add(a,b)
+        section_divider()
+        print("\n")
 
-    elif choice == 3:
-        print(f"Result is: {number_one * number_two}")  # Multiplication
-        print("------------------------------")
+    if choice == '2':
+        a, b = input_numbers()
+        sub(a,b)
+        section_divider()
+        print("\n")
+    
+    if choice == '3':
+        a, b = input_numbers()
+        mul(a,b)
+        section_divider()
+        print("\n")
 
-    elif choice == 4:
-        if number_two != 0:
-            print(f"Result is: {number_one / number_two}")  # Division
-            print("------------------------------")
-        else:
-            print("Error: Division by zero is not allowed.")
-            print("------------------------------")
-    elif choice == 5:
-        if number_two != 0:
-            print(f"Result is: {number_one % number_two}")  # Modulus
-            print("------------------------------")
-        else:
-            print("Error: Modulus by zero is not allowed.")
-            print("------------------------------")
+    if choice == '4':
+        a, b = input_numbers()
+        div(a,b)
+        section_divider()
+        print("\n")
 
-    elif choice == 6:
-        exit_program = True  # Exit the loop and program
-        print("Exiting the program...")
-        print("------------------------------")
+    if choice == '5':
+        a, b = input_numbers()
+        mod(a,b)
+        section_divider()
+        print("\n")
 
-    else:
-        print("Invalid choice, please try again.")
-        print("------------------------------")
+    if choice == '6':
+        print("Exiting the program.....")
+        section_divider()
+        break
+
+exit_program = True
